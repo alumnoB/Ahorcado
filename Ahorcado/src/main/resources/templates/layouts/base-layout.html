@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+<meta charset="utf-8" />
+<title>Ahorcado</title>
+
+<!-- CSS -->
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<!-- BOOTSTRAP -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+	
+	
+<!-- Place your kit's code here -->
+<script src="https://kit.fontawesome.com/ff4920b2c1.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	
+	<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand title">&nbsp AHORCADO</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/index}" sec:authorize="isAuthenticated()">JUEGO</a>
+					</li>
+					
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/wordconfiguration}" sec:authorize="isAuthenticated()">GESTIÓN PALABRAS</a>
+					</li>
+					
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/auth/register}" sec:authorize="!isAuthenticated()">REGISTRO</a>
+					</li>
+					
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/auth/login}" sec:authorize="!isAuthenticated()">LOGIN</a>
+					</li>
+	
+				</ul>
+				
+				<p class="nav-item"><a class="nav-link active"
+					aria-current="page" th:text="${#httpServletRequest.getHeader('User-Agent')}" >USER-AGENT</a>
+				</p>
+				
+				<!-- MENSAJE DE BIENVENIDA -->
+				<div th:if="${current_user != null}" th:text="${current_user.nombre}" class="btn btn-outline-success mr-5"></div>
+				
+    			
+				<!-- CIERRE DE SESIÓN -->
+				<form th:action="@{/auth/logout}" method="POST" id="logoutForm">
+					<button type="submit" class="btn btn-default">Cerrar Sesión</button>
+				</form>
+				
+				
+				<!-- DIRECCION IP -->
+				<div th:text="${direccionIP}" class="btn btn-outline-success mr-5"></div>
+				
+				<span name = "mensaje" style="font-weight: bold;" th:text="${bienvenida}"}/>
+    			<span class="rojo negrita"> Veces que ha visitado la pagina: </span>
+     			<span name = "mensaje" style="font-weight: bold;" th:text="${contador}"}/>
+		
+				&nbsp &nbsp &nbsp &nbsp
+
+			</div>
+		</div>
+	</nav>
+	
+	
+		
+</body>
+</html>

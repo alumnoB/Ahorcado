@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head">
+</head>
+
+<body>
+  
+	<nav th:replace="layouts/base-layout :: nav"></nav>
+	
+
+    <div id="gamebox" style="overflow:hidden;"><br/><br/>
+    	
+		<div th:switch="${current_game.vidas}">
+			<img th:case="6" id="cero" th:src="@{/img/transparente.png}" />
+			<img th:case="5" id="uno" th:src="@{/img/transparente.png}" />
+			<img th:case="4" id="dos" th:src="@{/img/transparente.png}" />
+			<img th:case="3" id="tres" th:src="@{/img/transparente.png}" />
+			<img th:case="2" id="cuatro" th:src="@{/img/transparente.png}" />
+			<img th:case="1" id="cinco" th:src="@{/img/transparente.png}" />
+			<img th:case="0" id="seis" th:src="@{/img/transparente.png}" />
+		</div>
+		
+		<div id="lives">
+			<img class="heartimg" src="/img/red_heart.png" th:each="i : ${#numbers.sequence(1, current_game.vidas,1)}"/>
+			<img class="heartimg" src="/img/black_heart.png" th:each="i : ${#numbers.sequence(1, 5-current_game.vidas,1)}"/>
+		</div>
+		<div id="lettersUsed">
+			<span class="letterUsed" th:classappend="${#strings.contains(current_game.formateoPalabra, letter)}?green" th:each="letter : ${current_game.letrasUsadas}"  th:utext="${letterStat.index%9==8}?'<br/>'+${letter}:${letter}"></span>
+		</div>
+		<ul id="helpbox"></ul>
+		
+		<div id="lettersSpace" th:if="${current_game.terminado}">
+			<span class="letter" th:each="i : ${#numbers.sequence(0, current_game.palabra.length()-1)}" th:classappend="${!#lists.contains(current_game.letrasUsadas, #strings.substring(current_game.formateoPalabra, i, i+1))}?red" th:text="${#strings.substring(current_game.palabra, i, i+1)}"></span>
+		</div>
+		<div id="lettersSpace" th:unless="${current_game.terminado}">
+			<span class="letter" th:each="i : ${#numbers.sequence(0, current_game.palabra.length()-1)}" th:text="${#lists.contains(current_game.letrasUsadas, #strings.substring(current_game.formateoPalabra, i, i+1))} ? ${#strings.substring(current_game.palabra, i, i+1)} : '_'"></span>
+		</div>
+		
+		<form>
+			<input id="inputletter" autocomplete="off" onfocus="this.value=''" maxlength="1" name="q" th:value="${param.q}" required autofocus/>
+			
+     	</form>
+	    <a th:unless="${!current_game.terminado}" href="/" id="go" alt="Go"></a>
+     	<a  href="/"><button id="returnbutton">Return<span class="glyphicon glyphicon-share-alt"></span></button></a>
+    </div>
+
+
+</body>
+</html>

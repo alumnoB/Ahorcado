@@ -1,0 +1,263 @@
+
+  /*ESTILOS DEL PARTIDA*/
+  #gamebox {
+  	width:80%;
+  	margin: auto;
+  }
+  #cero {
+  width: 78.15px;
+  height: 92px;
+  border: 1px black solid;  
+  background: url('../img/images.jpg') -468.90px 0;
+  display: block;
+  float:right;
+  margin-right:50px;
+}
+#seis {
+  width: 78.15px;
+  height: 92px;
+  border: 1px black solid;
+  background: url('../img/images.jpg') 0 0;
+  display: block;
+  float:right;
+  margin-right:50px;
+}
+#cinco {
+  width: 78.15px;
+  height: 92px;
+  border: 1px black solid;
+  background: url('../img/images.jpg') -78.15px 0;
+  display: block;
+  float:right;
+  margin-right:50px;
+}
+#cuatro {
+  width: 78.15px;
+  height: 92px;
+  border: 1px black solid;  
+  background: url('../img/images.jpg') -156.30px 0;
+  display: block;
+  float:right;
+  margin-right:50px;
+}
+#tres {
+  width: 78.15px;
+  height: 92px;
+  border: 1px black solid;  
+  background: url('../img/images.jpg') -234.45px 0;
+  display: block;
+  float:right;
+  margin-right:50px;
+}
+#dos {
+  width: 78.15px;
+  height: 92px;
+  border: 1px black solid;  
+  background: url('../img/images.jpg') -312.60px 0;
+  display: block;
+  float:right;
+  margin-right:50px;
+}
+#uno {
+  width: 78.15px;
+  height: 92px;
+  border: 1px black solid;  
+  background: url('../img/images.jpg') -390.75px 0;
+  display: block;
+  float:right;
+  margin-right:50px;
+}
+#cero {
+  width: 78.15px;
+  height: 92px;
+  border: 1px black solid;  
+  background: url('../img/images.jpg') -468.90px 0;
+  display: block;
+  float:right;
+  margin-right:50px;
+}
+  #imggame {
+  	display: block;
+  	float:right;
+  	width:220px;
+  	margin-right:50px;
+  }
+  
+  #lives {
+  	float: right;
+  }
+  
+  #lettersSpace {
+	text-align: center;
+	margin-top:30px;
+  }
+  
+  .letter {
+  	font-size: 4rem;
+  	padding: 0 4px;
+  }
+  
+  .heartimg {
+  	width:30px;
+  	margin: 10px 5px 0 5px;
+  	float:right;
+  }
+  
+  #lettersUsed {
+  	background-color: white;
+  	min-height: 200px;
+  	max-width: 400px;
+  	border-radius: 20px;
+  	padding: 20px;
+  	margin:15px;
+  	box-shadow: 0 0 10px 7px black;
+  }
+  
+  #inputletter {
+  	font-size: 5rem;
+  	width: 70px;
+  	text-align: center;
+  	box-shadow: 0 0 10px 8px #6C808D;
+  	background: white;
+  	border: none;
+  	display:block;
+  	margin:20px auto;
+  }
+  
+  #inputletter:focus {
+  	outline: none;
+  }
+  
+  .letterUsed {
+  	font-size: 4rem;
+  	color:black;
+  	font-weight: 700;
+  	margin: 0 5px;
+  }
+  
+  #returnbutton {
+  	color: white;
+  	background-color:#921515;
+  	border: 2px solid var(--main-bg-color);
+  	font-size: 2rem;
+  	padding: 10px;
+  	border-radius: 10px;
+  	float: right;
+  }
+  
+  #returnbutton:hover {
+  	border: 2px solid white;
+  }
+  
+
+  
+  .letterScore {
+  	letter-spacing: 4px;
+  }
+  
+  #emptydata, #emptydata *, #emptydata2, #emptydata2 * {
+  	font-size: 3rem;
+  	text-align: center;
+  	margin: 10px 0;
+  	font-weight: bold;
+  	font-style: italic;
+  	color: var(--second-color) !important;
+  	-webkit-text-stroke: 0.7px black;
+  }
+  
+  #helpbox {
+  	display: inline-block;
+  	right:50px;
+  	position:absolute;
+  }
+  
+  #help, #helpnolink {
+  	display: inline-block;
+  	padding: 2px;
+  	border-radius:50%;
+  	width:30px; 
+  	height:30px;
+  	text-align: center;
+	vertical-align: middle;
+	font-size: 2rem;
+	font-weight: bold;
+  }
+  
+  #hintsbox {
+  float: right;
+  }
+  
+  #numberhints {
+  float: left;
+  	display: block;
+  	margin-right:10px;
+  	font-size: 2rem;
+  	color: white;
+  }
+  
+  .numberhints-text {
+  	font-size: 2rem;
+  	color: white;
+  	float: left;
+  	display: block;
+  	margin-left: 5px;
+  }
+  
+  .nohints {
+  	font-size: 3rem;
+  	font-weight: bold;
+  	color: red;
+  	text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+  }
+  
+  .letterhint {
+  list-style: none;
+  	font-size: 4rem;
+  	margin-bottom:15px;
+  	border: 3px white solid;
+  	border-radius:10px;
+  	padding: 0 10px;
+  	text-align: center;
+  }
+ 
+  
+  /*FIN DE ESTILOS DEL PARTIDA*/
+  
+  
+  /*ESTILOS DEL RESUMEN DE UN PARTIDA*/
+  .gamehistory {
+    margin-left:98px;
+  	color: var( --main-letter-color);
+  	text-align: center;
+  	font-size: 3.5rem;
+  	font-weight: 700;
+  	text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+  	letter-spacing: 2px;
+  }
+  
+  #resumebox {
+  	width:80%;
+  	margin:auto;
+  }
+  
+  .resumescore {
+  	max-width:100% !important;
+  }
+      
+  #returnresumebutton {
+  	position: relative;
+  	bottom:7px;
+  	color: white;
+  	background-color:#921515;
+  	border: 2px solid var(--main-bg-color);
+  	font-size: 2rem;
+  	padding: 10px;
+  	border-radius: 10px;
+  	float: right;
+  }
+  
+  #returnresumebutton:hover {
+  	border: 2px solid white;
+  }
+  /*FIN DE ESTILOS DEL RESUMEN PARTIDA*/
+  

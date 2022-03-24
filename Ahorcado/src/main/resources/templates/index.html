@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+
+<body>
+  
+	<nav th:replace="layouts/base-layout :: nav"></nav>		
+
+	<br/><br/><table class="table table-striped">
+	  <thead>
+	  
+	    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Nombre</th>
+		      <th scope="col">Vidas</th>
+		      <th scope="col">Palabra</th>
+		      <th scope="col">Resumen/Continuar</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    
+	    <tr th:each="juego: ${mygames}" th:classappend="${juego.terminado and juego.vidas > 0}?greenbg">
+			<div class="row rowgame"  th:classappend="${juego.terminado and juego.vidas == 0}?redbg">
+			      <th th:text=${juegoStat.index+1}></th>
+			      <td th:text=${juego.usuario.nombre}></td>
+			      <td th:text=${juego.vidas}></td>
+			      <td>
+				      	<div th:if="${juego.terminado}">
+							<span class="letterScore" th:each="i : ${#numbers.sequence(0, juego.palabra.length()-1)}" th:classappend="${!#lists.contains(juego.letrasUsadas, #strings.substring(juego.formateoPalabra, i, i+1))}?red" th:text="${#strings.substring(juego.palabra, i, i+1)}"></span>
+						</div>
+						<div  th:unless="${juego.terminado}">
+							<span class="letterScore" th:each="i : ${#numbers.sequence(0, juego.palabra.length()-1)}" th:text="${#lists.contains(juego.letrasUsadas, #strings.substring(juego.formateoPalabra, i, i+1))} ? ${#strings.substring(juego.palabra, i, i+1)} : '_'"></span>
+						</div>
+			      </td>
+			      <td>
+				      	<div class="mt-4">
+							<a th:href="@{/game/resume/{id}(id=${juego.id})}" class="btn btn-primary">Resumen</a> 
+							<a th:if=${!juego.terminado} th:href="@{/game/edit/{id}(id=${juego.id})}" class="btn btn-primary">Continuar</a>
+						</div>
+			      </td>
+			</div>
+		</tr>
+	    
+	  </tbody>
+	</table>
+
+    <div class="mt-4">
+		<a th:href="@{/game/new/1/{id}(id=${current_user.id})}"  class="btn btn-primary btn-lg">Partida</a>
+	</div>
+				
+</body>
+</html>

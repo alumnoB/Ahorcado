@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layouts/base-layout :: head"></head>
+
+<body>
+  
+	<nav th:replace="layouts/base-layout :: nav"></nav>
+	
+	<div id="resumebox">
+		
+		<br/> <br/><h1>Historial de partida</h1>
+		<div id="score" class="resumescore">
+			<div class="row" id="columnnames">
+				<div class="col-sm-3">
+					#
+				</div>
+				<div class="col-sm-3">
+					Letra
+				</div>
+				<div class="col-sm-3">
+					Vidas
+				</div>
+				<div class="col-sm-3">
+					Palabra
+				</div>
+			</div>
+			
+			<div id="emptydata" th:if="${#lists.isEmpty(resume_game.partida)}">
+				<div class="col-sm-12">
+					
+				</div>
+			</div>
+			
+			<div class="row rowgame" th:each="partida: ${resume_game.partida}" th:classappend="${partidaStat.index > 0 and resume_game.partida[partidaStat.index-1].vidas > partida.vidas}?redbg">
+				<div class="col-sm-3">
+					<span th:text=${partidaStat.index+1}></span>
+				</div>
+				<div class="col-sm-3">
+					<span th:text=${partida.palabra}></span>
+				</div>
+				<div class="col-sm-3">
+					<span th:text=${partida.vidas}></span>
+				</div>
+				<div class="col-sm-3">
+					<span class="letterScore" th:text="${partida.palabra}"></span>
+				</div>
+			</div>	
+		</div>
+		<a  href="/"><button id="returnresumebutton">Return <span class="glyphicon glyphicon-share-alt"></span></button></a>
+	</div>
+       
+	
+	
+</body>
+</html>
